@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="card-success" class="hidden">
+        <i class="fa fa-check"></i>
+        <p>Оплата успешно совершена!</p>
+      </div>
+      <div id="form-errors" class="hidden">
+        <i class="fa fa-exclamation-triangle"></i>
+        <p id="card-error">Ошибка карты</p>
+      </div>
+      <div id="form-container">
+      
+        <div id="card-front">
+          <div id="shadow"></div>
+          <!--- end card image container --->
+          
+          <div id="placeholder-bank" class="placeholder-bank">
+            <img src="images/logos/Logo_Sberbank.svg (1).png" alt="sber" id="sber-bank-logo" class="hidden">
+            <img src="images/logos/Raiffeisen_Bank_2022_RU_Logo.svg (1).png" alt="raff" id="raff-bank-logo" class="hidden">
+            <img src="images/logos/T-Bank_logo_2024.svg.png" alt="tinkoff" id="tinkoff-bank-logo" class="hidden">
+            <img src="images/logos/Логотип_Яндекс.Денег.svg.png" alt="yandex" id="yandex-bank-logo" class="hidden">
+            <img src="images/logos/roketbank-logo-1.png" alt="" id="rocket-bank-logo" class="hidden">
+            <img src="images/logos/Otkritie_Bank_logo.svg.png" alt="" id="open-bank-logo" class="hidden">
+            <img src="images/logos/New-logo-mts-bank.png" alt="" id="mts-bank-logo" class="hidden">
+            <img src="images/logos/Gazprombank_en.svg.png" alt="" id="gaz-bank-logo" class="hidden">
+            <img src="images/logos/Alfa_Bank_RU_logo.svg.png" alt="" id="alpha-bank-logo" class="hidden">
+            <img src="images/logos/Logo_78.png" alt="" id="beeline-bank-logo" class="hidden">
+          </div>
+
+          <label for="card-number">
+            Номер карты.
+          </label>
+          <input  type="text" id="card-number" placeholder="1234 5678 9101 1112" length="16" max-length="16">
+          
+          <div id="date-system">
+              
+            <div id="exp-container">
+              <label for="card-exp">
+                Срок действия
+              </label>
+              <input id="card-month" type="text" placeholder="ММ" length="2">
+              <input id="card-year" type="text" placeholder="ГГ" length="2">
+            </div>
+
+            <div id="image-container">
+                <span id="card-image">
+                    <img src="images/mir.png" alt="mir" id="mir_card_logo" class="hidden">
+                    <img src="images/mastercard.svg" alt="mastercard" id="mastercard_card_logo" class="hidden">
+                    <img src="images/paypal.svg" alt="paypal" id="paypal_card_logo" class="hidden">
+                    <img src="images/visa.svg" alt="visa" id="visa_card_logo" class="hidden">
+                    <img src="images/maestro.svg" alt="maestro" id="maestro_card_logo" class="hidden">
+                    <img src="images/unionpay.png" alt="unionpay" id="unionpay_card_logo" class="hidden">
+                    <img src="images/american.svg" alt="american" id="american_card_logo" class="hidden">
+                </span>
+            </div>
+
+          </div>
+          
+              <div id="cvc-container">
+            <label for="card-cvc"> CVC/CVV</label>
+            <input id="card-cvc" placeholder="XXX" type="text" min-length="3" max-length="3">
+            <br>
+            <br>
+            <br><br><br>
+          </div>
+
+          <!--- end CVC container --->
+          <!--- end exp container --->
+        </div>
+        <!--- end card front --->
+        <div id="card-back">
+
+          <div id="card-stripe">
+
+          </div>
+      
+        </div>
+        <!--- end card back --->
+
+        <input type="text" id="card-token" />
+
+        <button type="button" id="card-btn">Submit</button>
+      
+      </div>
+      <!--- end form container --->
+      <!-- <script type="text/javascript" src="banks.js"></script> -->
+      <script type="module" src="main.js"></script>
+</body>
+</html>
