@@ -1,5 +1,6 @@
 
 .codegpt
+test-docker
 # Created by https://www.toptal.com/developers/gitignore/api/python,visualstudio,visualstudiocode,venv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudio,visualstudiocode,venv
 
@@ -601,3 +602,6 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudio,visualstudiocode,venv
+test-docker/card-validation-web-docker-image.tar.xz
+test-docker/card-validation-web-docker-image.zip
+test-docker/docker-compose.yaml

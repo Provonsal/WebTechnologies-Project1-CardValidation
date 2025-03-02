@@ -1,0 +1,9 @@
+startWindows.bat
+startLinux.sh
+SECURITY.md
+.gitignore
+test-docker/
+.vscode/
+.venv/
+.codegpt/
+__pycache__/
