@@ -1,19 +1,19 @@
 import ExpressionStatment from "./ExpressionStatment.js";
 
 export default class KeyCheck extends ExpressionStatment {
-    #Key;
+    #code;
     #Ctrl;
     #Shift;
 
     Check(KeydownEvent) {
-        return (KeydownEvent.key == this.#Key)
+        return (KeydownEvent.code == this.#code)
             && (KeydownEvent.ctrlKey == this.#Ctrl)
             && (KeydownEvent.shiftKey == this.#Shift);
     }
 
-    constructor(key, ctrl = false, shift = false) {
+    constructor(code, ctrl = false, shift = false) {
         super();
-        this.#Key = key;
+        this.#code = code;
         this.#Ctrl = ctrl;
         this.#Shift = shift;
     }

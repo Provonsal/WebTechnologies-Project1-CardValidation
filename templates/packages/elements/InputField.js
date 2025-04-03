@@ -1,4 +1,5 @@
 import DefaultValidators from "../validators/DefaultValidators.js";
+import { InitCard } from "../card/Card.js";
 import Element from "./Element.js";
 
 export default class InputField extends Element {
@@ -10,7 +11,7 @@ export default class InputField extends Element {
     };
 
     GetTextLength() {
-        return this.GetElementById().value.length;
+        return (this.GetElementById().value).replaceAll(' ', '').length;
     }
 
     SetOnKeydown(func) {
@@ -71,14 +72,27 @@ export default class InputField extends Element {
         return IsValid;
     }
 
-    AppendText(pasted_string) {
-        let tmp_str = this.GetElementById().value.replaceAll(' ', '') + pasted_string;
+    AddText(pasted_string, selection_index) {
+        
+        
+        let tmp_str = this.GetElementById().value;
+        
+        tmp_str = tmp_str.replaceAll(' ', '');
+        
+        tmp_str = (tmp_str.length > 0) ? tmp_str.split(''): [''];
+
+        tmp_str.splice(selection_index, 0, pasted_string);
+        
+        tmp_str = tmp_str.join().replaceAll(',','');
+        
         this.GetElementById().value = String(tmp_str).substring(0, 16);
     }
 
     ControlPaste(event) {
 
         event.preventDefault();
+
+        let selection_index = this.GetElementById().selectionStart;
 
         let pasted_string = event.clipboardData.getData("text/plain");
 
@@ -89,7 +103,7 @@ export default class InputField extends Element {
         ];
 
         if (!(DefaultValidators.any(all_checks))) {
-            this.AppendText(pasted_string);
+            this.AddText(pasted_string, selection_index);
 
             //original_string = String(this.GetElementById().value).split('');
             pasted_string = String(this.GetElementById().value).split('');
@@ -107,6 +121,8 @@ export default class InputField extends Element {
             }
             this.GetElementById().value = String(pasted_string.join()).replaceAll(',', '');
         }
+
+        InitCard();
 
     }
 
