@@ -16,7 +16,7 @@ let cardField = new InputField(
 );
 
 cardField.SetNewEventListener("blur", Formating.FormatCard);
-cardField.SetNewEventListener("focus", Formating.UnFormatCard);
+//cardField.SetNewEventListener("focus", Formating.UnFormatCard);
 cardField.SetNewEventListener("input", InitCard);
 cardField.SetNewEventListener("paste", cardField.ControlPaste.bind(cardField));
 

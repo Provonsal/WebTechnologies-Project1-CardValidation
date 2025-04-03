@@ -9,7 +9,7 @@ app.ConnectNewAPIRoute(APICheckBin())
 
 app.Mount('/', StaticFiles(directory='./templates', html=True), name='static')
 
-app = app.App
+App = app.app
     
-# if (__name__ == "main"):
-#     uvicorn.run("main:app.App", reload=True, reload_includes="*.css, *.html, *.js", reload_dirs=['card','','images'])
+if (__name__ == "__main__"):
+    uvicorn.run("main:app.app", reload=True, reload_includes="*.css, *.html, *.js", reload_dirs=['card','','images'])

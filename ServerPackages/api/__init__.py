@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from ServerPackages.api.Routes import API
 from starlette.types import ASGIApp
-
+from fastapi.middleware.cors import CORSMiddleware
 
 class APP():
     """
@@ -36,8 +36,18 @@ class APP():
         Args:
             debug (bool, optional): Whether to enable debug mode for the application. Defaults to False.
         """
+        
+        
         # Initialize a new FastAPI application instance with the given debug flag
         self.app = FastAPI(debug=debug)
+        
+        self.app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     def ConnectNewAPIRoute(self, route: API):
         """
