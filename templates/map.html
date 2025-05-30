@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Интерактивная карта из SVG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 20px;
+    }
+    svg {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: none;
+      pointer-events: none;
+      font-size: 14px;
+      z-index: 100;
+    }
+
+    .cards-info {
+      position: absolute;
+      background: white;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: none;
+      font-size: 14px;
+      z-index: 100;
+      border-color: black;
+      border: 2px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Интерактивная карта</h2>
+<div id="map-container"></div>
+<div class="tooltip" id="tooltip"></div>
+<div class="cards-info", id="cards-info">
+  <ul class="cards-list">
+    <li>card1</li>
+    <li>card2</li>
+  </ul>
+</div>
+
+<script type="module" src="map.js"></script>
+
+</body>
+</html>
