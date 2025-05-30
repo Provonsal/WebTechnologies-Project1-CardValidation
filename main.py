@@ -1,11 +1,12 @@
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 from ServerPackages.api import APP
-from ServerPackages.api.Routes import APICheckBin
+from ServerPackages.api.Routes import APICheckBin, APIGetOptions
 
 app = APP()
 
 app.ConnectNewAPIRoute(APICheckBin())
+app.ConnectNewAPIRoute(APIGetOptions())
 
 app.Mount('/', StaticFiles(directory='./templates', html=True), name='static')
 

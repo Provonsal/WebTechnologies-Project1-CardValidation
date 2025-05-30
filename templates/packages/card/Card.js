@@ -4,7 +4,7 @@ import CardNumber from "./CardNumber.js";
 import CardSystem from "./CardSystem.js";
 import SystemNames from "../enumerations/SystemNames.js";
 import EnumBankAndId from "../enumerations/EnumBankAndId.js";
-import Tools from "../validators/Tools.js";
+import Tools, { CookieController } from "../validators/Tools.js";
 
 export default class Card {
 
@@ -77,6 +77,22 @@ export default class Card {
         }
         
     }
+
+    GetRegionIso(){
+        let region_selector = document.getElementById("region-selector");
+        return region_selector.value
+    }
+
+    SendToCookie(){
+        let data = {
+            number: String(this.CardNumber.Number),
+            date: document.getElementById("card-month").value + "/" + document.getElementById("card-year").value,
+            cvv: document.getElementById("card-cvc").value,
+            code_iso: this.GetRegionIso()
+        }
+        CookieController.addCookie(String(this.CardNumber.Number), data);
+    }
+
 
     constructor(CardNumber) {
         this.CardNumber = CardNumber.replaceAll(" ", "");

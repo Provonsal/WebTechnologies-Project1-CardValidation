@@ -20,21 +20,21 @@ function deleteCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
 }
 
-let coock = Object.keys(parseCookies());
+// let coock = Object.keys(parseCookies());
 
-for (const cookie of coock) {
-    deleteCookie(cookie);
-}
+// for (const cookie of coock) {
+//     deleteCookie(cookie);
+// }
 
-let card1 = { number: "1111 1111 1111 1111", date: "05/28", cvv: "228", code_iso: "RU-KYA" };
-let card2 = { number: "2222 2222 2222 2222", date: "05/28", cvv: "228", code_iso: "RU-KYA" };
-let card3 = { number: "3333 3333 3333 3333", date: "05/28", cvv: "228", code_iso: "RU-SA" };
-let card4 = { number: "4444 4444 4444 4444", date: "05/28", cvv: "228", code_iso: "RU-SA" };
+// let card1 = { number: "1111 1111 1111 1111", date: "05/28", cvv: "228", code_iso: "RU-KYA" };
+// let card2 = { number: "2222 2222 2222 2222", date: "05/28", cvv: "228", code_iso: "RU-KYA" };
+// let card3 = { number: "3333 3333 3333 3333", date: "05/28", cvv: "228", code_iso: "RU-SA" };
+// let card4 = { number: "4444 4444 4444 4444", date: "05/28", cvv: "228", code_iso: "RU-SA" };
 
-addCookie("card1", card1);
-addCookie("card2", card2);
-addCookie("card3", card3);
-addCookie("card4", card4);
+// addCookie("card1", card1);
+// addCookie("card2", card2);
+// addCookie("card3", card3); 
+// addCookie("card4", card4);
 
 // Загрузка SVG файла
 fetch('russia.svg')  // замени на свой путь к SVG файлу
@@ -52,6 +52,8 @@ fetch('russia.svg')  // замени на свой путь к SVG файлу
         for (const element of svgElement.children) {
             element.style.fill = '#008B8B';
         }
+
+        console.log(svgElement);
 
         // Обработка кликов по элементам на карте
         svgElement.addEventListener("click", function (event) {

@@ -1,6 +1,7 @@
 import DefaultValidators from "../validators/DefaultValidators.js";
 import { InitCard } from "../card/Card.js";
 import Element from "./Element.js";
+import {CookieController} from "../validators/Tools.js";
 
 export default class InputField extends Element {
 
@@ -126,6 +127,7 @@ export default class InputField extends Element {
 
     }
 
+    
     constructor(ElementId, LengthExpr, KeyTypeExpr, KeyboardKeysExprArr) {
         super(ElementId);
         this.#StatementsArray.LengthLimit = LengthExpr;

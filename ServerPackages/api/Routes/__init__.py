@@ -97,3 +97,21 @@ class APICheckBin(API):
         # Add the EndPoint method as the handler for this route
         self._router.add_api_route(self._path, self.EndPoint)
 
+class APIGetOptions(API):
+    def EndPoint(self):
+        with open("data/regions.json", 'r') as file:
+            regions: dict = json.loads(file.read())
+            
+        new_regions = {}
+        
+        for region in regions:
+            new_regions[region["title"]] = region["code_iso_31662"]
+            
+        return new_regions
+    
+    def __init__(self):
+        super().__init__()
+        
+        self._path = self._path + "options/"
+        # Add the EndPoint method as the handler for this route
+        self._router.add_api_route(self._path, self.EndPoint)

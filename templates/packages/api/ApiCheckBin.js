@@ -15,3 +15,18 @@ export default class ApiCheckBin extends ApiRoute {
         return new Bank(data.bank, data.color);
     }
 }
+
+export class ApiOptions extends ApiRoute {
+
+    constructor(){
+        super();
+        this.Host = this.Host + "/options";
+    }
+
+    GetResponse() {
+
+        let data = this.Get(this.Host + '/');
+
+        return data;
+    }
+}

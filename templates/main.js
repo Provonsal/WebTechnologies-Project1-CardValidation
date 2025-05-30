@@ -1,10 +1,11 @@
-import { InitCard } from "./packages/card/Card.js";
+import Card, { InitCard } from "./packages/card/Card.js";
 import InputField from "./packages/elements/InputField.js";
 import Button from "./packages/elements/Button.js";
 import NumberType from "./packages/statments/NumberType.js";
 import FieldLength from "./packages/statments/FieldLength.js";
 import KeyCheck from "./packages/statments/KeyCheck.js";
 import Formating from "./packages/validators/Formating.js";
+import {ApiOptions} from "./packages/api/ApiCheckBin.js"
 
 let KeysCheckers = [
     new KeyCheck('KeyV', true), 
@@ -44,7 +45,11 @@ let cardButton = new Button(
     "card-btn"
 );
 
-cardButton.SetNewEventListener("click", InitCard);
+function createAndSend() {
+    new Card(document.getElementById("card-number").value).SendToCookie();
+};
+
+cardButton.SetNewEventListener("click", createAndSend);
 
 let cardMonth = new InputField(
     "card-month",
@@ -79,8 +84,7 @@ cardMonth.SetNewEventListener('focus', RemoveErrors);
 cardYear.SetNewEventListener('focus', RemoveErrors);
 cardMonth.SetNewEventListener('blur', CheckDate);
 cardYear.SetNewEventListener('blur', CheckDate);
-// cardMonth.SetNewEventListener('input', CheckDate);
-// cardYear.SetNewEventListener('input', CheckDate);
+
 
 let cardCVC = new InputField(
     "card-cvc",
@@ -88,3 +92,24 @@ let cardCVC = new InputField(
     new NumberType(),
     KeysCheckers
 );
+
+function addOptionsToDropList() {
+    let region_selector = document.getElementById("region-selector");
+
+    let regions = new ApiOptions().GetResponse();
+    let regions_names = Object.keys(regions);
+    let region_iso = Object.values(regions);
+    let rg = Object.entries(regions);
+
+    if (region_selector){
+        rg.forEach(region => {
+            let opt = document.createElement("option");
+            opt.textContent = region[0];
+            opt.value = region[1];
+
+            region_selector.appendChild(opt)
+        });
+    }
+}
+
+addOptionsToDropList();
